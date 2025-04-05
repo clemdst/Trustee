@@ -16,27 +16,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'OPEN_FRONTEND_PANEL') {
         // Ensure we return true immediately to indicate we'll send an async response
         try {
-            // First check if we can get the current window
-            chrome.windows.getCurrent()
-                .then(window => {
-                // Set the side panel to be enabled and point to the iframe page
-                return chrome.sidePanel.setOptions({
-                    enabled: true,
-                    path: 'sidepanel.html',
-                    // Specify for the current window
-                    tabId: sender.tab?.id
-                });
+            // Enable the side panel first
+            chrome.sidePanel.setOptions({
+                enabled: true,
+                path: 'sidepanel.html'
             })
                 .then(() => {
-                // Open the side panel for the specific tab that sent the message
-                return chrome.windows.getCurrent()
-                    .then(window => {
-                    if (!window.id) {
-                        throw new Error('No valid window ID found');
-                    }
-                    return chrome.sidePanel.open({
-                        windowId: window.id
-                    });
+                // Get the current window
+                return chrome.windows.getCurrent();
+            })
+                .then((window) => {
+                if (!window.id) {
+                    throw new Error('No valid window ID found');
+                }
+                // Then try to open it with the current window
+                return chrome.sidePanel.open({
+                    windowId: window.id,
+                    tabId: sender.tab?.id
                 });
             })
                 .then(() => {

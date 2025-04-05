@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ScoringGauge } from '../../../shared/components/scoringGauge.component';
 import { initializeTrustee } from '../trusteeInit';
 export const Scoring = () => {
     const [score, setScore] = useState(50);
@@ -69,6 +68,10 @@ export const Scoring = () => {
     useEffect(() => {
         console.log('Current score in component state:', score);
     }, [score]);
-    return (React.createElement("div", { style: containerStyle },
-        React.createElement(ScoringGauge, { score: score, colorClass: colorClass })));
+    return (
+    // <div style={containerStyle}>
+    //   <ScoringGauge score={score} colorClass={colorClass} />
+    // </div>
+    React.createElement("div", null,
+        React.createElement("h1", null, "Trustee")));
 };

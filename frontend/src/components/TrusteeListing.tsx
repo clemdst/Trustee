@@ -73,7 +73,7 @@ const TrusteeListing = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <button onClick={() => handleScoreChange(Math.random() * 100)}>Click me</button>
+      <button onClick={() => handleScoreChange(Math.round(Math.random()*100))}>Click me</button>
       {/* Header */}
       <motion.div
         className="flex justify-between items-center"

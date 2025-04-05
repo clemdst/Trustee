@@ -8,6 +8,11 @@ let lastProcessedScore = null;
 // Function to handle gauge click
 const handleGaugeClick = () => {
     try {
+        // Check if we can communicate with the background script
+        if (!chrome.runtime.id) {
+            console.error('Extension context invalid');
+            return;
+        }
         // Send message to background script to handle opening the side panel
         chrome.runtime.sendMessage({
             action: 'OPEN_FRONTEND_PANEL'

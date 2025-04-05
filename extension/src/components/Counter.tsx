@@ -93,8 +93,11 @@ export const Scoring: React.FC = () => {
   }, [score]);
 
   return (
-    <div style={containerStyle}>
-      <ScoringGauge score={score} colorClass={colorClass} />
+    // <div style={containerStyle}>
+    //   <ScoringGauge score={score} colorClass={colorClass} />
+    // </div>
+    <div>
+      <h1>Trustee</h1>
     </div>
   );
 };
