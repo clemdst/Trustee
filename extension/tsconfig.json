@@ -1,0 +1,25 @@
+// {
+//     "compilerOptions": {
+//       "target": "es6",
+//       "module": "commonjs",
+//       "strict": true,
+//       "esModuleInterop": true,
+//       "outDir": "./dist",
+//     },
+//     "include": ["src/**/*.ts"]
+//   }
+
+  {
+    "compilerOptions": {
+      "target": "es6",
+      "module": "es6",
+      "outDir": "./dist",
+      "strict": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "sourceMap": true
+    },
+    "include": ["src/**/*.ts", "src/background.js"],
+    "exclude": ["node_modules"]
+  }
+  

@@ -1,0 +1,17 @@
+{
+  "name": "data_scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "^0.0.279",
+    "typescript": "^5.6.3"
+  }
+
+}
