@@ -3,6 +3,9 @@
   "name": "Trustee",
   "description": "Your AI-Powered Scam Detector for Online Marketplaces",
   "version": "1.0",
+  "icons": {
+    "16": "src/logo/logo_simplified.png"
+  },
   "permissions": [
     "tabs",
     "activeTab",
@@ -10,6 +13,9 @@
   ],
   "action": {
     "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "src/logo/logo_simplified.png"
+    },
     "default_title": "Trusty"
   },
   "background": {
@@ -18,6 +24,7 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "src/logo/*",
         "src/popup.ts",
         "src/popup.html"
       ],
