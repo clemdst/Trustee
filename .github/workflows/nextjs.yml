@@ -83,12 +83,12 @@ jobs:
           ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Add .nojekyll file
-        run: touch ./landing-page/.nojekyll
+        run: touch ./landing-page/out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./landing-page
+          path: ./landing-page/out
 
   # Deployment job
   deploy:
