@@ -2,7 +2,7 @@ import { startElementInspector } from "./inspectElement.js";
 export const getSourceCode = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const currentTab = tabs[0];
-        if (currentTab === null || currentTab === void 0 ? void 0 : currentTab.id) {
+        if (currentTab?.id) {
             chrome.scripting.executeScript({
                 target: { tabId: currentTab.id },
                 func: () => document.documentElement.outerHTML
@@ -20,4 +20,3 @@ export const getSourceCode = () => {
         }
     });
 };
-//# sourceMappingURL=getPageSource.js.map

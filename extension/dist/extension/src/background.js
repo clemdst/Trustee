@@ -1,9 +1,4 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/*!***************************!*\
-  !*** ./src/background.ts ***!
-  \***************************/
-
+"use strict";
 // Initialize the extension
 console.log('Background script initializing...');
 // Enable side panel functionality
@@ -89,7 +84,3 @@ chrome.runtime.onStartup.addListener(() => {
 });
 // Log that background script is ready
 console.log('Background script ready!');
-
-/******/ })()
-;
-//# sourceMappingURL=background.js.map

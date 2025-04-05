@@ -1,13 +1,15 @@
-
 // Wait for DOM to be loaded
 document.addEventListener('DOMContentLoaded', () => {
-  const actionBtn = document.getElementById('actionBtn');
+  const actionBtn = document.getElementById('actionBtn') as HTMLButtonElement;
+  let currentTabId: number | undefined;
   
   if (actionBtn) {
     actionBtn.addEventListener('click', async () => {
       // Get the current active tab
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (tab.id) {
+        currentTabId = tab.id;
+        
         // Inject the content script if not already injected
         await chrome.scripting.executeScript({
           target: { tabId: tab.id },
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (chrome.runtime.lastError) {
             console.error('Error:', chrome.runtime.lastError);
           } else {
-            console.log('Counter injected:', response);
+            console.log('Gauge injected successfully');
           }
         });
       }

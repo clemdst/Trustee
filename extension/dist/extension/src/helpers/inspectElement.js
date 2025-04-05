@@ -35,4 +35,3 @@ export const startElementInspector = () => {
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('click', handleClick);
 };
-//# sourceMappingURL=inspectElement.js.map

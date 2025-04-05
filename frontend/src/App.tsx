@@ -1,9 +1,9 @@
 import './App.css'
-import TrustyListing from './components/TrusteeListing'
+import TrusteeListing from './components/TrusteeListing'
 
 function App() {
   return (
-    <TrustyListing />
+    <TrusteeListing />
   )
 }
 

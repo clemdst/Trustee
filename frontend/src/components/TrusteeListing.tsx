@@ -3,10 +3,49 @@ import { Button } from "@/components/ui/button";
 import { AlertTriangle, Plus, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 import { ScoringGauge } from "../../../shared/components/scoringGauge.component";
+import { useEffect, useCallback, useState, useRef } from "react";
+
+// Add TypeScript declaration for the global property
+declare global {
+  interface Window {
+    updateTrusteeScore?: (score: number) => void;
+  }
+}
 
 const TrusteeListing = () => {
-  // Example score value (can be dynamic)
-  const score = 90;
+  const [score, setScore] = useState(68);
+  const lastSentScore = useRef(score);
+
+  // Function to update the extension's gauge
+  const updateExtensionGauge = useCallback((newScore: number) => {
+    // Only send if the score has actually changed
+    if (lastSentScore.current !== newScore) {
+      try {
+        window.postMessage({
+          type: 'UPDATE_SCORE',
+          score: newScore,
+          source: 'TrusteeListing'
+        }, '*');
+        lastSentScore.current = newScore;
+      } catch (error) {
+        console.error('Frontend: Error updating score:', error);
+      }
+    }
+  }, []);
+
+  // Initialize the extension communication when component mounts
+  useEffect(() => {
+    // Only send initial score once when component mounts
+    if (lastSentScore.current !== score) {
+      updateExtensionGauge(score);
+    }
+  }, [score, updateExtensionGauge]);
+
+  // Example of how to update the score (you can use this or remove it)
+  const handleScoreChange = (newScore: number) => {
+    setScore(newScore);
+  };
+
 
   // Determine status, color, and dynamic message based on score
   let status = "";
@@ -34,6 +73,7 @@ const TrusteeListing = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <button onClick={() => handleScoreChange(Math.random() * 100)}>Click me</button>
       {/* Header */}
       <motion.div
         className="flex justify-between items-center"

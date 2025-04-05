@@ -1,9 +1,4 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/*!**********************!*\
-  !*** ./src/popup.ts ***!
-  \**********************/
-
+"use strict";
 // Wait for DOM to be loaded
 document.addEventListener('DOMContentLoaded', () => {
     const actionBtn = document.getElementById('actionBtn');
@@ -35,7 +30,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Action button not found in the DOM');
     }
 });
-
-/******/ })()
-;
-//# sourceMappingURL=popup.js.map

@@ -1,11 +1,15 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
+  devtool: 'source-map',
   entry: {
     popup: './src/popup.ts',
-    content: './src/content.ts'
+    content: './src/content.ts',
+    background: './src/background.ts',
+    sidepanel: './src/sidepanel.ts',
+    trusteeInit: './src/trusteeInit.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,22 +22,30 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.css'],
+    alias: {
+      '@shared': path.resolve(__dirname, '../shared')
+    }
   },
   optimization: {
-    minimize: true
+    minimize: false // Disable minimization for easier debugging
   },
   plugins: [
-    new CopyWebpackPlugin({
+    new CopyPlugin({
       patterns: [
-        { 
-          from: path.resolve(__dirname, '../shared/assets/logo'),
-          to: path.resolve(__dirname, 'src/logo')
-        }
-      ]
-    })
+        { from: 'src/popup.html', to: 'popup.html' },
+        { from: 'src/sidepanel.html', to: 'sidepanel.html' },
+        { from: 'src/sidepanel.css', to: 'sidepanel.css' },
+        { from: 'src/popup.css', to: 'popup.css' },
+        { from: 'src/manifest.json', to: 'manifest.json' }
+      ],
+    }),
   ]
 }; 

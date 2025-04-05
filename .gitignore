@@ -1,7 +1,6 @@
 node_modules
-dist
 
-
+./extension/dist
 
 .env
 ./DS_Store
