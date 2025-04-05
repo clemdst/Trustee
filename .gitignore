@@ -1,0 +1,43 @@
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv
+env/
+venv/
+ENV/
+*.pkl
+*.db
+*.sqlite
+
+# 📦 Package management
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 💻 VSCode
+.vscode/
+
+# 🔒 Secrets
+*.env
+.env.*
+secrets.*.json
+
+# 📁 Environnements virtuels
+.venv/
+env/
+venv/
+ENV/
+*.pyenv
+
+# 📄 Jupyter
+.ipynb_checkpoints/
+
+# 🤖 Transformers cache
+.cache/
+huggingface/
+
+
