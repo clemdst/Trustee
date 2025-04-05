@@ -1,27 +1,41 @@
 import os
+import json
 from mistralai import Mistral, UserMessage
+from backend.rag.rag_engine import get_rag_context
 
-# Use the API key from environment variables
-api_key = 'aZIxFzj12oiTJrlWgZbh0hLyJNC9Arz4'
-model = "mistral-small"  # or "mistral-small" based on your preference
+api_key = 'PSUKsxRiQe8xRdsSrrwkkD9zgCqrey3b'
+model = "mistral-small"
 
 client = Mistral(api_key=api_key)
 
 def analyze_listing(title: str, description: str, price: float) -> str:
+    listing_summary = f"Title: {title}\nDescription: {description}\nPrice: ${price}"
+
+    # 🧠 Retrieve relevant context dynamically via RAG
+    rag_context = get_rag_context(listing_summary)
+
     prompt = f"""
-You are a fraud detection assistant. Analyze the following e-commerce listing, and return your response in  return:
-Return your answer in the following JSON format:
+    You are a fraud detection assistant specialized in identifying scam patterns in online marketplace listings.
 
-{{
-  "score": <int from 0 to 100>,
-  "red_flags": ["..."],
-  "verdict": "Likely Scam" | "Possibly Scam" | "Likely Safe"
-}}
+    Use the following known scam indicators as your guide:
+    {rag_context}
 
-Title: {title}
-Description: {description}
-Price: ${price}
-"""
+    Analyze the following listing:
+
+    {listing_summary}
+
+    Return your assessment in exactly this JSON format:
+
+    {{
+      "score": <int from 0 to 100>,
+      "red_flags": ["..."],
+      "verdict": "Likely Scam" | "Possibly Scam" | "Likely Safe",
+      "scammer_objective": "Explain briefly or 'None'"
+    }}
+
+    Return JSON only, without commentary.
+    """
+
     
     # Create a UserMessage object with the prompt
     messages = [UserMessage(content=prompt)]
