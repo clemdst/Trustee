@@ -54,8 +54,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd landing-page
-          ${{ steps.detect-package-manager.outputs.runner }} ${{ steps.detect-package-manager.outputs.command }}
-
+          npm ci  # or yarn install if using yarn
 
       - name: Setup Node
         uses: actions/setup-node@v4
