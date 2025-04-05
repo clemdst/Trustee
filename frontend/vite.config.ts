@@ -9,6 +9,20 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@shared": path.resolve(__dirname, "../shared"),
     },
   },
+  build: {
+    // Prevent build failures from stopping the process
+    emptyOutDir: false,
+    // Enable source maps for debugging
+    sourcemap: true,
+    // Configure watch mode
+    watch: {
+      // Include files to watch
+      include: ['src/**', '../shared/**'],
+      // Exclude node_modules
+      exclude: ['node_modules/**', 'dist/**']
+    }
+  }
 })

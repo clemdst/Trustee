@@ -1,12 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --font-adlam: "ADLaM Display", sans-serif; 
-}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
