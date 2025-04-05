@@ -1,6 +1,5 @@
 "use client";
 
-import Drawer from "@/components/drawer";
 import { Icons } from "@/components/icons";
 import Menu from "@/components/menu";
 import { buttonVariants } from "@/components/ui/button";
@@ -62,9 +61,6 @@ export default function Header() {
               </Link>
             </div>
           </div>
-        </div>
-        <div className="mt-2 cursor-pointer block lg:hidden">
-          <Drawer />
         </div>
       </div>
       <hr

@@ -21,7 +21,7 @@ export default function NavigationMenuDemo() {
       <NavigationMenuList>
         {siteConfig.header.map((item, index) => (
           <NavigationMenuItem key={index}>
-            {item.trigger ? (
+            {item.trigger && (
               <>
                 <NavigationMenuTrigger>{item.trigger}</NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -63,17 +63,6 @@ export default function NavigationMenuDemo() {
                   </ul>
                 </NavigationMenuContent>
               </>
-            ) : (
-              <Link
-                href={item.href || ""}
-                target="_arya"
-                legacyBehavior
-                passHref
-              >
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  {item.label}
-                </NavigationMenuLink>
-              </Link>
             )}
           </NavigationMenuItem>
         ))}

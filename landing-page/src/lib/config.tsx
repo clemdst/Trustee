@@ -53,7 +53,7 @@ export const siteConfig = {
           {
             title: "For Leboncoin",
             href: "#",
-            description: "Protection for France's largest marketplace.",
+            description: "Protection for France&apos;s largest marketplace.",
           },
           {
             title: "eBay Protection",
@@ -160,7 +160,7 @@ export const siteConfig = {
       question: "Which marketplaces does Trustee support?",
       answer: (
         <span>
-          Trustee works with major marketplaces including Leboncoin, eBay, Etsy, and Vinted. We're constantly adding support for more platforms to keep you protected wherever you shop.
+          Trustee works with major marketplaces including Leboncoin, eBay, Etsy, and Vinted. We&apos;re constantly adding support for more platforms to keep you protected wherever you shop.
         </span>
       ),
     },
@@ -168,7 +168,7 @@ export const siteConfig = {
       question: "Is my data safe with Trustee?",
       answer: (
         <span>
-          Yes, Trustee prioritizes your privacy and security. We only analyze the content you're actively viewing, and we never store your personal information or marketplace credentials.
+          Yes, Trustee prioritizes your privacy and security. We only analyze the content you&apos;re actively viewing, and we never store your personal information or marketplace credentials.
         </span>
       ),
     },
