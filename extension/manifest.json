@@ -1,28 +1,32 @@
 {
-    "manifest_version": 3,
-    "name": "AirScraper",
-    "description": "A simple Chrome extension that will scrape all your data",
-    "version": "1.0",
-    "permissions": ["tabs", "activeTab", "scripting"],
-    "action": {
-      "default_popup": "src/popup.html",
-      "default_title": "AirScraper"
-    },
-    "background": {
-      "service_worker": "src/background.js"
-    },
-    "web_accessible_resources": [
-      {
-        "resources": [
-          "src/popup.ts",
-          "src/popup.html"
-        ],
-        "matches": ["<all_urls>"]
-      }
-    ],
-    "content_security_policy": {
-      "extension_pages": "script-src 'self'; object-src 'self'"
+  "manifest_version": 3,
+  "name": "Trustee",
+  "description": "Your AI-Powered Scam Detector for Online Marketplaces",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Trusty"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/popup.ts",
+        "src/popup.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
-
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
-  
+}
