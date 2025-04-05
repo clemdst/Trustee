@@ -50,6 +50,13 @@ jobs:
             exit 1
           fi
 
+      # Add this step after detecting package manager
+      - name: Install dependencies
+        run: |
+          cd landing-page
+          ${{ steps.detect-package-manager.outputs.runner }} ${{ steps.detect-package-manager.outputs.command }}
+
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -72,7 +79,11 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('landing-page/package-lock.json', 'landing-page/yarn.lock') }}-
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build && ${{ steps.detect-package-manager.outputs.runner }} next export -o ./landing-page
+        run: |
+          cd landing-page
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          ${{ steps.detect-package-manager.outputs.runner }} next export -o ../landing-page
+
 
       - name: Add .nojekyll file
         run: touch ./landing-page/.nojekyll
