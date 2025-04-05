@@ -23,11 +23,21 @@
   "background": {
     "service_worker": "src/background.js"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/content.js"
+      ]
+    }
+  ],
   "web_accessible_resources": [
     {
       "resources": [
+        "dist/*",
         "src/logo/*",
-        "src/popup.ts",
         "src/popup.html"
       ],
       "matches": [
@@ -36,6 +46,7 @@
     }
   ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self'"
   }
 }
