@@ -1,31 +1,43 @@
-node_modules
-
-./extension/dist
-
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
 .env
-./DS_Store
+.venv
+env/
+venv/
+ENV/
+*.pkl
+*.db
+*.sqlite
 
-# Logs
-./landing-page/logs
-./landing-page/*.log
-./landing-page/npm-debug.log*
-./landing-page/yarn-debug.log*
-./landing-page/yarn-error.log*
-./landing-page/pnpm-debug.log*
-./landing-page/lerna-debug.log*
+# 📦 Package management
+pip-log.txt
+pip-delete-this-directory.txt
 
-./landing-page/node_modules
-./landing-page/dist
-./landing-page/dist-ssr
-./landing-page/*.local
+# 💻 VSCode
+.vscode/
 
-# Editor directories and files
-./landing-page/.vscode/*
-./landing-page/!.vscode/extensions.json
-./landing-page/.idea
-./landing-page/.DS_Store
-./landing-page/*.suo
-./landing-page/*.ntvs*
-./landing-page/*.njsproj
-./landing-page/*.sln
-./landing-page/*.sw?
+# 🔒 Secrets
+*.env
+.env.*
+secrets.*.json
+
+# 📁 Environnements virtuels
+.venv/
+env/
+venv/
+ENV/
+*.pyenv
+
+# 📄 Jupyter
+.ipynb_checkpoints/
+
+# 🤖 Transformers cache
+.cache/
+huggingface/
+
+

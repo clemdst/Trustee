@@ -3,4 +3,5 @@ uvicorn
 transformers
 torch
 torchvision
-python-dotenv
+mistralai
+
