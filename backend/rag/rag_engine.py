@@ -7,7 +7,7 @@ import os
 
 def get_rag_context(query: str) -> str:
     try:
-        mistral_api_key = 'PSUKsxRiQe8xRdsSrrwkkD9zgCqrey3b'
+        mistral_api_key = 'OZSyUAoFi2DmsjJz5Cuqg8vWeFzG9grq'
 
         # Load all markdown files from the knowledge base directory
         loader = DirectoryLoader("kb", glob="**/*.md")
