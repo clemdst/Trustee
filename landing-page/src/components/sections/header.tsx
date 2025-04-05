@@ -3,7 +3,6 @@
 import { Icons } from "@/components/icons";
 import Menu from "@/components/menu";
 import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -39,7 +38,7 @@ export default function Header() {
           title="brand-logo"
           className="relative mr-6 flex items-center space-x-2"
         >
-          <img src={`${siteConfig.url}/logo_checkmark.png`} alt="Trustee" className="w-[150px]" />
+          <img src={`logo_checkmark.png`} alt="Trustee" className="w-[150px]" />
         </Link>
 
         <div className="hidden lg:block">
