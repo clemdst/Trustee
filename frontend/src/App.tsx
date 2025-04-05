@@ -1,5 +1,5 @@
 import './App.css'
-import TrustyListing from './components/TrustyListing'
+import TrustyListing from './components/TrusteeListing'
 
 function App() {
   return (

@@ -2,8 +2,7 @@ import TrusteeLogo from "@shared/assets/logo/logo_simplified.png";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Plus, Settings } from "lucide-react";
 import { motion } from "framer-motion";
-import "react-circular-progressbar/dist/styles.css";
-import { ScoringGauge } from "./scoringGauge.component";
+import { ScoringGauge } from "../../../shared/components/scoringGauge.component";
 
 const TrusteeListing = () => {
   // Example score value (can be dynamic)
@@ -16,15 +15,15 @@ const TrusteeListing = () => {
 
   if (score > 75) {
     status = "Legit ✅";
-    colorClass = "text-green-600"; // Green color for Trust
+    colorClass = "#6bdba7";
     message = "Trustee thinks that this listing is trustworthy.";
   } else if (score >= 40 && score <= 75) {
     status = "Take care ⚠️";
-    colorClass = "text-orange-600"; // Orange color for Take care
+    colorClass = "#f59e0b";
     message = "Trustee thinks that you should proceed with caution.";
   } else {
     status = "Risky 🚨";
-    colorClass = "text-red-600"; // Red color for Risky
+    colorClass = "#ef4444";
     message = "Trustee thinks that this listing could be a scam.";
   }
 
@@ -48,7 +47,56 @@ const TrusteeListing = () => {
         </motion.div>
       </motion.div>
 
-      <ScoringGauge score={score} colorClass={colorClass} message={message} status={status} />
+      <ScoringGauge score={score} colorClass={colorClass} />
+        
+        
+
+        <div className="flex flex-col items-center justify-center text-center gap-1.5 translate-y-[-30px]">
+          {/* Status */}
+          <div className="flex justify-center items-center">
+            <h2 className={`text-2xl font-semibold `}  style={{ color: colorClass }}>{status}</h2>
+          </div>
+
+          {/* Description */}
+          <p className={`text-sm`}>
+            {message}
+          </p>
+
+        {/* Tags Section with Animation */}
+        <div className="flex flex-wrap gap-2 mt-2">
+          <motion.span
+            className="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            AI-generated description
+          </motion.span>
+          <motion.span
+            className="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            Phishing
+          </motion.span>
+          <motion.span
+            className="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
+            Similar images found
+          </motion.span>
+        </div>
+      </div>
+
 
 
       {/* Listing Analysis */}
@@ -147,8 +195,7 @@ const TrusteeListing = () => {
             "How do you want me to pay to you?",
             "Could you tell me more about you?",
           ].map((text, idx) => (
-            <Button variant="outline" className="w-full" key={idx}>
-              {text}
+<Button variant="outline" className="!bg-gray-100 border-1 !border-gray-100 w-full" key={idx}>              {text}
               <Plus className="w-4 h-4 ml-auto" />
             </Button>
           ))}
@@ -156,13 +203,13 @@ const TrusteeListing = () => {
       </motion.div>
 
       {/* Footer */}
-      <motion.p
-        className="text-center text-gray-400 text-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+      <div className="flex justify-center items-center">
+      <Button
+        className="rounded-b-sm !bg-transparent border-1 text-black h-8 "
       >
         See more
-      </motion.p>
+      </Button>
+      </div>
     </motion.div>
   );
 };
