@@ -4,7 +4,8 @@
   "description": "Your AI-Powered Scam Detector for Online Marketplaces",
   "version": "1.0",
   "icons": {
-    "16": "src/logo/logo_simplified.png"
+    "16": "src/logo/logo_128x128.png",
+    "48": "src/logo/shield_48x48.png"
   },
   "permissions": [
     "tabs",
@@ -14,7 +15,8 @@
   "action": {
     "default_popup": "src/popup.html",
     "default_icon": {
-      "16": "src/logo/logo_simplified.png"
+      "16": "src/logo/logo_128x128.png",
+      "48": "src/logo/shield_48x48.png"
     },
     "default_title": "Trusty"
   },
