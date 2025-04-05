@@ -1,2 +1,28 @@
 node_modules
 .env
+./DS_Store
+
+# Logs
+./landing-page/logs
+./landing-page/*.log
+./landing-page/npm-debug.log*
+./landing-page/yarn-debug.log*
+./landing-page/yarn-error.log*
+./landing-page/pnpm-debug.log*
+./landing-page/lerna-debug.log*
+
+./landing-page/node_modules
+./landing-page/dist
+./landing-page/dist-ssr
+./landing-page/*.local
+
+# Editor directories and files
+./landing-page/.vscode/*
+./landing-page/!.vscode/extensions.json
+./landing-page/.idea
+./landing-page/.DS_Store
+./landing-page/*.suo
+./landing-page/*.ntvs*
+./landing-page/*.njsproj
+./landing-page/*.sln
+./landing-page/*.sw?
