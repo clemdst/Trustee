@@ -38,45 +38,73 @@ def check_image_with_serpapi(image_url: str) -> dict:
     except Exception as e:
         return {"error": str(e)}
 
-def analyze_listing(title: str, description: str, price: float, image_url: str = None) -> dict:
+def analyze_listing(title: str, description: str, price: float, image_url: str = None, conversation: str = "") -> dict:
     listing_summary = f"Title: {title}\nDescription: {description}\nPrice: ${price}"
 
-    # 🧠 Retrieve relevant context dynamically via RAG
+    # 🧠 Context from your Markdown-based RAG knowledge base
     rag_context = get_rag_context(listing_summary)
+    scoring_guide = get_rag_context("How to compute the scam score?")
+    examples_reference = get_rag_context("Show me examples of scam and safe listings.")
 
-    # 🔍 Image analysis using SerpApi and local comparison
+
+    # 🔍 Optional: check the conversation via RAG
+    conversation_check = ""
+    if conversation.strip():
+        conversation_check = get_rag_context(f"conversation_check:\n{conversation}")
+        if conversation_check:
+            print("📥 RAG conversation insight:", conversation_check)
+
+    # 🔍 Image analysis
     image_analysis = {}
     if image_url:
         image_analysis = check_image_with_serpapi(image_url)
 
+    # Format conversation clearly
+    formatted_convo = "\n".join(
+        [f"Buyer said: {line}" if "buyer" in line.lower() else f"Seller said: {line}" for line in conversation.strip().splitlines()]
+    ) if conversation else "N/A"
+
+    # 🔮 Prompt to Mistral
     prompt = f"""
-    You are a fraud detection assistant specialized in identifying scam patterns in online marketplace listings.
+You are a fraud detection assistant specialized in identifying scam listings.
 
-    Use the following known scam indicators as your guide:
-    {rag_context}
+Use the following scoring methodology to evaluate how risky this listing is:
+{scoring_guide}
 
-    Analyze the following listing:
+Here are some examples to guide your reasoning:
+{examples_reference}
 
-    {listing_summary}
+Analyze the following listing:
 
-    Return your assessment in exactly this JSON format:
+Title: {title}
+Description: {description}
+Price: ${price}
 
-    {{
-      "score": <int from 0 to 100>,
-      "red_flags": ["..."],
-      "verdict": "Likely Scam" | "Possibly Scam" | "Likely Safe",
-      "scammer_objective": "Explain briefly or 'None'"
-    }}
+Conversation:
+{formatted_convo}
 
-    Return JSON only, without commentary.
-    """
+Image Analysis:
+{json.dumps(image_analysis, indent=2)}
 
+Return your assessment in exactly this JSON format:
+
+{{
+  "score": <0–100>,
+  "red_flags": ["..."],
+  "verdict": "Likely Scam" | "Possibly Scam" | "Likely Safe",
+  "scammer_objective": "Explain briefly or 'None'",
+  "reasoning": "Explain your scoring decisions",
+  "suggested_reply": "A safe message the buyer could send to avoid a scam"
+}}
+
+Return JSON only, without commentary.
+"""
+
+
+
+    # Send prompt to Mistral
     messages = [UserMessage(content=prompt)]
-
-    stream_response = client.chat.stream(
-        model=model,
-        messages=messages
-    )
+    stream_response = client.chat.stream(model=model, messages=messages)
 
     response_content = ""
     for chunk in stream_response:
@@ -85,10 +113,12 @@ def analyze_listing(title: str, description: str, price: float, image_url: str =
     try:
         result = json.loads(response_content)
         result["image_analysis"] = image_analysis
+        result["conversation"] = conversation
         return result
     except json.JSONDecodeError:
         return {
             "error": "Invalid JSON format from Mistral",
             "raw_output": response_content,
-            "image_analysis": image_analysis
+            "image_analysis": image_analysis,
+            "conversation": conversation
         }

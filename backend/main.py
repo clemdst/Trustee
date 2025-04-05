@@ -17,8 +17,9 @@ async def analyze(request: Request):
     description = data.get("description", "")
     price = float(data.get("price", 0))
     image_url = data.get("image_url", None)
+    conversation = data.get("conversation", "")
 
-    result = analyze_listing(title, description, price, image_url)
+    result = analyze_listing(title, description, price, image_url, conversation)
     return {"result": result}
 
 @app.on_event("startup")
@@ -33,11 +34,11 @@ async def run_analyze_on_startup():
     description = data.get("description", "")
     price = float(data.get("price", 0))
     image_url = data.get("image_url", None)
+    conversation = data.get("conversation", "")
 
-    # Run full analysis with image support
-    analyze_result = analyze_listing(title, description, price, image_url)
+    # Run full analysis with image and conversation
+    analyze_result = analyze_listing(title, description, price, image_url, conversation)
 
-    # Optional debug
     print("✅ Analysis Result:")
     print(json.dumps(analyze_result, indent=2))
 
