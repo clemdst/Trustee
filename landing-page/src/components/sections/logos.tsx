@@ -4,27 +4,27 @@ import Image from "next/image";
 const companies = [
   {
     name: "ebay",
-    image: "/ebay_PNG9-339848959.png",
+    image: "ebay_PNG9-339848959.png",
     className: "h-10"
   },
   {
     name: "etsy",
-    image: "/Etsy-Logo-3577338453.png",
+    image: "Etsy-Logo-3577338453.png",
     className: "h-100"
   },
   {
     name: "rakuten",
-    image: "/Rakuten-logo-4071634441.png",
+    image: "Rakuten-logo-4071634441.png",
     customClass: "h-20"
   },
   {
     name: "vinted",
-    image: "/Vinted_(logo,_2022)-4243615128.png",
+    image: "Vinted_(logo,_2022)-4243615128.png",
     className: "h-3"
   },
   {
     name: "leboncoin",
-    image: "/leboncoin-fr_BIG-4ed5bcda-2978202023.png",
+    image: "leboncoin-fr_BIG-4ed5bcda-2978202023.png",
     customClass: "h-10"
   }
 ];
