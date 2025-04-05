@@ -55,6 +55,7 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: landing-page/package-lock.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -66,9 +67,9 @@ jobs:
         with:
           path: |
             .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('landing-page/package-lock.json', 'landing-page/yarn.lock') }}-${{ hashFiles('landing-page/**.[jt]s', 'landing-page/**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('landing-page/package-lock.json', 'landing-page/yarn.lock') }}-
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build && ${{ steps.detect-package-manager.outputs.runner }} next export -o ./landing-page
