@@ -120,7 +120,8 @@ Special thanks to:
 - Utopia
 - KRYPTOSPHERE®
 
-[![INSTALLATION VIDEO](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]([http://makeapullrequest.com](https://youtu.be/6heiHBouHkk))
+[Installation Video]([https://mywebsite.com](https://youtu.be/6heiHBouHkk))
+
 
 
 
