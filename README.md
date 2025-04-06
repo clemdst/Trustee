@@ -120,7 +120,7 @@ Special thanks to:
 - Utopia
 - KRYPTOSPHERE®
 
-[Installation Video]([https://mywebsite.com](https://youtu.be/6heiHBouHkk))
+[Installation Video](https://youtu.be/6heiHBouHkk)
 
 
 
