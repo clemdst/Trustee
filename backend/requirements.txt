@@ -2,4 +2,11 @@ fastapi
 uvicorn
 transformers
 torch
+torchvision
 python-dotenv
+mistralai
+langchain_community
+langchain_mistralai
+langchain
+unstructured
+bs4
