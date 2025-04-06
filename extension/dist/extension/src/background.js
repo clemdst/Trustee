@@ -1,6 +1,46 @@
 "use strict";
 // Initialize the extension
 console.log('Background script initializing...');
+// API endpoint configuration
+const API_ENDPOINT = 'http://127.0.0.1:8000/api/page-source'; // Update this with your actual Python API endpoint
+// Function to send page source to API
+async function sendToAPI(data) {
+    try {
+        const response = await fetch(API_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+            throw new Error(`API request failed with status ${response.status}`);
+        }
+        return await response.json();
+    }
+    catch (error) {
+        console.error('Error sending to API:', error);
+        throw error;
+    }
+}
+// Function to get page source from active tab
+async function getActiveTabSource() {
+    try {
+        const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (!activeTab.id) {
+            throw new Error('No active tab found');
+        }
+        const response = await chrome.tabs.sendMessage(activeTab.id, { action: 'GET_PAGE_SOURCE' });
+        if (!response.success) {
+            throw new Error(response.error || 'Failed to get page source');
+        }
+        return response.data;
+    }
+    catch (error) {
+        console.error('Error getting page source:', error);
+        throw error;
+    }
+}
 // Enable side panel functionality
 chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: true })
@@ -8,6 +48,20 @@ chrome.sidePanel
 // Listen for messages from content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('Background received message:', message);
+    if (message.action === 'GET_AND_SEND_PAGE_SOURCE') {
+        getActiveTabSource()
+            .then(sourceData => sendToAPI(sourceData))
+            .then(apiResponse => {
+            sendResponse({ success: true, data: apiResponse });
+        })
+            .catch(error => {
+            sendResponse({
+                success: false,
+                error: error instanceof Error ? error.message : 'Unknown error'
+            });
+        });
+        return true; // Will send response asynchronously
+    }
     if (message.action === 'OPEN_FRONTEND_PANEL') {
         // Ensure we return true immediately to indicate we'll send an async response
         try {
