@@ -9,7 +9,7 @@
   Your intelligent companion for safe online marketplace transactions.
 </p>
 
-> This project was developed during the **Kryptosphère x Utopia**  Hackathon 2025: LLM to Agentic AI.
+> This project was developed during the **Kryptosphere x Utopia**  Hackathon 2025: LLM to Agentic AI.
 
 > Made with ❤️ at Hackathon ESSEC 2025
 
@@ -29,7 +29,7 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Trustee is a Chrome Extension that leverages advanced AI to protect users from scams on online marketplaces. It acts as a real-time trust advisor, analyzing listings and conversations to help users make informed decisions. The AI, powered by Mistral AI, simulates realistic decision-making and provides detailed trust scores for sellers and listings.
+[Trustee](https://jaddevvv.github.io/Hackathon-From-LLM-To-Agentic-AI/) is a Chrome Extension that leverages advanced AI to protect users from scams on online marketplaces. It acts as a real-time trust advisor, analyzing listings and conversations to help users make informed decisions. The AI, powered by Mistral AI, simulates realistic decision-making and provides detailed trust scores for sellers and listings.
 
 This project was developed during the ESSEC Hackathon 2025, focusing on the transition from LLMs to agentic AI. I worked on this project with [Jad Kabbaj](https://github.com/Jaddevvv) and [Jordan Baumard](https://github.com/jordanbmrd) who made the frontend, and with Anais Boughanem for the backend. Imane Ourdane handled the business part.
 
