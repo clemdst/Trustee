@@ -9,7 +9,7 @@
   Your intelligent companion for safe online marketplace transactions.
 </p>
 
-> This project was developed during the Kryptosphère x Utopia  Hackathon 2025: LLM to Agentic AI.
+> This project was developed during the **Kryptosphère x Utopia**  Hackathon 2025: LLM to Agentic AI.
 
 > Made with ❤️ at Hackathon ESSEC 2025
 
@@ -31,21 +31,20 @@
 
 Trustee is a Chrome Extension that leverages advanced AI to protect users from scams on online marketplaces. It acts as a real-time trust advisor, analyzing listings and conversations to help users make informed decisions. The AI, powered by Mistral AI, simulates realistic decision-making and provides detailed trust scores for sellers and listings.
 
-This project was developed during the ESSEC Hackathon 2025, focusing on the transition from LLMs to agentic AI.
+This project was developed during the ESSEC Hackathon 2025, focusing on the transition from LLMs to agentic AI. I worked on this project with [Jad Kabbaj](https://github.com/Jaddevvv) and [Jordan Baumard](https://github.com/jordanbmrd) who made the frontend, and with Anais Boughanem for the backend. Imane Ourdane handled the business part.
+
+The extension :
+1. Analyzes marketplace listings using computer vision and NLP
+2. Monitors chat conversations in real-time
+3. Generates trust scores based on multiple factors
+4. Provides actionable insights to users
 
 ## Context
 
 This project was created during the ESSEC Hackathon 2025, which took place in April 2025. The hackathon focused on developing solutions that bridge the gap between Large Language Models (LLMs) and agentic AI systems.
+The project was supported by several partners : MistralAI, Nvidia, AWS, Google Cloud, Ledger, ...
 
-The project was supported by several partners:
-- ESSEC Metalab & France 2030
-- Amazon Web Services (AWS)
-- NVIDIA
-- Mistral AI
-- Kima Ventures
-- Bpifrance
-- Entrepreneurs First
-- Morpho Labs
+
 
 ## Features
 
@@ -63,23 +62,7 @@ The project was supported by several partners:
   - Comprehensive trust score for each seller
   - Detailed explanations for scoring decisions
   - Historical performance tracking
-
-## Technical Notes
-
-Trustee uses a combination of technologies to provide its scam detection capabilities:
-
-- **Frontend**: React.js for the Chrome Extension interface
-- **Backend**: Node.js for API handling and processing
-- **AI**: Mistral AI for natural language processing and decision making
-- **Cloud**: AWS for hosting and scaling
-- **Hardware Acceleration**: NVIDIA for improved AI performance
-
-The extension works by:
-1. Analyzing marketplace listings using computer vision and NLP
-2. Monitoring chat conversations in real-time
-3. Generating trust scores based on multiple factors
-4. Providing actionable insights to users
-
+  - 
 ## Getting Started
 
 ### Prerequisites
@@ -90,37 +73,15 @@ The extension works by:
 ### Installation
 
 1. Install the Chrome Extension
-4. Follow the installation prompts
-
-## Usage
-
-1. **Listing Analysis**
-   - Navigate to any marketplace listing
-   - Trustee automatically scans the content
-   - View the trust score and detailed analysis
-
-2. **Chat Protection**
-   - Open your marketplace chat
-   - Trustee monitors conversations in real-time
-   - Receive alerts for suspicious behavior
+2. Follow the installation prompts : 
+[Installation Video](https://youtu.be/6heiHBouHkk)
 
 ## Acknowledgments
-
-Thank you to all the partners who supported this project:
-- ESSEC Metalab & France 2030
-- Amazon Web Services (AWS)
-- NVIDIA
-- Mistral AI
-- Kima Ventures
-- Bpifrance
-- Entrepreneurs First
-- Morpho Labs
 
 Special thanks to:
 - Utopia
 - KRYPTOSPHERE®
 
-[Installation Video](https://youtu.be/6heiHBouHkk)
 
 
 
